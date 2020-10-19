@@ -1,0 +1,50 @@
+﻿@model VehicleIncidentTracker.Views.Home.VehiclesModel
+
+@{
+    ViewData["Title"] = "Vehicles";
+}
+
+<h1>Vehicles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles[0].VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles[0].Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles[0].ModelYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelYear)
+            </td>
+            <td>
+                @*<a asp-page="./Edit" asp-route-id="@item.VIN">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.VIN">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.VIN">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,85 @@
+﻿@model VehicleIncidentTracker.Views.Home.IncidentsModel
+
+@{
+    ViewData["Title"] = "Incidents";
+}
+
+<h1>Incidents</h1>
+<div style="text-align:right;"><a href="/incidents/add">Add New Incident</a></div>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Search Parameters:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input asp-for="Filter.VIN" class="form-control" />
+                </td>
+                <td>
+                    <input asp-for="Filter.FromDate" class="form-control" />
+                </td>
+                <td> To </td>
+                <td>
+                    <input asp-for="Filter.ToDate" class="form-control" />
+                </td>
+                <td>
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].Vehicle.VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].DateAndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].Vehicle.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].Vehicle.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents[0].Vehicle.ModelYear)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Incidents)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.VIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.ModelYear)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
